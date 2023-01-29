@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Digital Clock</title>
+  <style>
+    body
+     {
+        background-size: cover;
+        background-repeat: no-repeat; 
+        
+        font-family: 'Brush Script MT', cursive;
+        margin: 0;
+        padding: 0;
+        height: 100vh; 
+    }
+  h2{
+    color: aliceblue;
+  }
+#animation
+{
+    width: 20px;
+    height: 20px;
+    background: rgb(229, 236, 239);
+  position: relative;
+  animation: myfirst 5s infinite;
+  animation-direction: normal;
+}
+
+@keyframes myfirst {
+  0%   {background: rgb(235, 242, 243); left: -300px; top: 0px;}
+  25%  {background: rgb(62, 168, 222); left: 300px; top: 0px;}
+  50%  {background: rgb(49, 13, 132); left: 300px; top: 220px;}
+  75%  {background: rgb(62, 168, 222); left: -300px; top: 220px;}
+  100% {background: rgb(240, 243, 244); left: -300px; top: 0px;}
+}
+
+
+    .clock {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      /*background-color: #0d0116;*/ 
+    }
+    .greet{
+      font-size: 30px;
+      font-weight: bold;
+      color: rgb(243, 136, 237);
+    }
+    .date-time {
+      font-size: 30px;
+      color: rgb(35, 11, 24);
+    }
+
+    .time {
+      font-size: 80px;
+      font-weight: bold;
+      color: rgb(255, 255, 255);
+    }
+
+    
+    @media screen and (max-width: 768px) {
+      .time {
+        font-size: 50px;
+      }
+    }
+  </style>
+</head>
+
+<body background="walpaper.jpg">
+    <marquee direction="right"><h2>Hiii, Greetings from Sayandeep</h2></marquee>
+    
+  <div class="clock">
+    <div id="animation"></div>
+    <div class="date-time"></div> 
+    <div class="time"></div>
+    <div class="greet"></div>
+  </div>
+
+  <script>
+    var greet= document.querySelector('.greet');
+    var time = document.querySelector('.time');
+    var dateTime = document.querySelector('.date-time');
+
+    function updateClock() {
+      // Get the current time, day , month and year
+      var now = new Date();
+      var hours = now.getHours();
+      var minutes = now.getMinutes();
+      var seconds = now.getSeconds();
+      var day = now.getDay();
+      var date = now.getDate();
+      var month = now.getMonth();
+      var year = now.getFullYear();
+
+      // store day and month name in an array
+      var dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+      var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+      
+     /* if(hours>=5 && hours<=11){
+        document.getElementsByClassName("greet").innerHTML='Hi, Good Morning'
+      }else if(hours>=12 && hours<=17){
+        document.getElementsByClassName("greet").innerHTML='Hi, Good Afternoon'
+      }else if(hours>=18 && hours<=20){
+        document.getElementsByClassName("greet").innerHTML='Hi, Good Evening'
+      }else{
+        document.getElementsByClassName("greet").innerHTML='Hi, Good Night'
+      }*/
+
+      // format date and time
+      hours = hours % 12 || 12;
+      minutes = minutes < 10 ? '0' + minutes : minutes;
+      seconds = seconds < 10 ? '0' + seconds : seconds;
+      date = date < 10 ? '0' + date : date;
+
+      // display date and time
+      
+      var gr = hours < 12 ? 'Good Morning' : 'Good Night';
+      greet.innerHTML = 'Hi, ' + gr; 
+      var period = hours < 12 ? 'AM' : 'PM';
+      time.innerHTML = hours + ':' + minutes + ':' + seconds + ' ' + period;
+      dateTime.innerHTML = dayNames[day] + ', ' + monthNames[month] + ' ' + date + ', ' + year;
+    }
+
+    updateClock();
+    setInterval(updateClock, 1000);
+  </script>
+</body>
+
+</html>
