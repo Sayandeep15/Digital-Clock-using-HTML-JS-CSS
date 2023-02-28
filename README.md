@@ -5,4 +5,4 @@ Digital clock along with calender using HTML, CSS and Java script
 
 For live view [click here](https://digital-clk-sayandeep.netlify.app/)
 <p align="center"><img src="https://profile-counter.glitch.me/Digital-Clock-using-HTML-JS-CSS/count.svg" /></p>
-<img align="right" alt="Coding" width="380" src="https://media.giphy.com/media/4rZA5D22301iMgrUNd/giphy.gif">
+<img align="right" alt="Coding" width="380" src="[https://media.giphy.com/media/4rZA5D22301iMgrUNd/giphy.gif](https://digital-clk-sayandeep.netlify.app/)">
